@@ -1,6 +1,6 @@
 % Colors
-\definecolor{ListingBackground}{HTML}{FFFFFF}
-\definecolor{LinkColor}{HTML}{00007A}
+\definecolor{ListingBackground}{HTML}{E6E6E6}
+\definecolor{LinkColor}{HTML}{000000}
 
 
 % Font
@@ -30,9 +30,15 @@
 \setlist[description]{style=nextline} % Break definitions of terms to a new line (used by \begin{description} \item[foo] bar \end{description})
 \renewcommand*{\bibfont}{\small}
 
+%Hurenkinder und Schusterjungen vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
 % Quellcode
 \usepackage{listings}
 \usepackage{float}
+\usepackage{textcomp}
 \lstset{
     inputpath=assets/listings,
     language=Java,			% Standardsprache des Quellcodes
@@ -59,6 +65,45 @@
     keywordstyle=\color[rgb]{0.133,0.133,0.6},
     commentstyle=\color[rgb]{0.133,0.545,0.133},
     stringstyle=\color[rgb]{0.627,0.126,0.941},
-    float
+    float,
+    upquote=true
 }
-\lstloadlanguages{Python,Java}
+
+
+\colorlet{punct}{red!60!black}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    string=[s]{"}{"},
+    stringstyle=\color{numb},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\lstdefinelanguage{yaml}{
+  identifierstyle=\color{delim},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{numb},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstloadlanguages{Python,Java,bash}
