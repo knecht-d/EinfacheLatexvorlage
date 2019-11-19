@@ -10,8 +10,10 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           root_file: seminararbeit.tex
+      - run: mkdir -p doc
+      - run: cp seminararbeit.pdf doc/seminararbeit.pdf
       - name: Provide PDF
         uses: actions/upload-artifact@master
         with:
-          name: seminararbeit.pdf
-          path: .
+          name: seminararbeit
+          path: doc
