@@ -10,7 +10,8 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           root_file: seminararbeit.tex
-      - name: Provide Artifact
+      - name: Provide PDF
         uses: actions/upload-artifact@master
         with:
           name: seminararbeit.pdf
+          path: .
