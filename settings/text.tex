@@ -2,8 +2,8 @@
 \definecolor{ListingBackground}{HTML}{E6E6E6}
 \definecolor{LinkColor}{HTML}{000000}
 
-
 \usepackage{array}
+\usepackage{adjustbox}
 
 % Font
 \usepackage[onehalfspacing]{setspace}
@@ -82,9 +82,9 @@
 
 \lstdefinelanguage{TypeScript}{
     keywords={typeof, new, true, false, catch, function, return, null, catch,
-    switch, var, if, in, while, do, else, case, break, number, string, Date},
+            switch, var, let, const, if, in, while, do, else, case, break, number, string, Date, async, await},
     keywordstyle=\color{delim}\bfseries,
-    ndkeywords={class, export, boolean, throw, implements, import, this, type, defaults, extends},
+    ndkeywords={class, export, boolean, throw, implements, import, this, type, defaults, extends, from, as},
     ndkeywordstyle=\color{magenta}\bfseries,
     identifierstyle=\color{black},
     sensitive=true,
@@ -97,9 +97,9 @@
 
 \lstdefinelanguage{JavaScript}{
     keywords={typeof, new, true, false, catch, function, return, null, catch,
-    switch, var, if, in, while, do, else, case, break, number, string, Date},
+            switch, var, let, const, if, in, while, do, else, case, break, number, string, Date, async, await},
     keywordstyle=\color{delim}\bfseries,
-    ndkeywords={class, export, boolean, throw, implements, import, this, type, defaults, extends},
+    ndkeywords={class, export, boolean, throw, implements, import, this, defaults, extends},
     ndkeywordstyle=\color{magenta}\bfseries,
     identifierstyle=\color{black},
     sensitive=true,
@@ -112,56 +112,96 @@
 
 
 \lstdefinelanguage{json}{
-    string=[s]{"}{"},
-    stringstyle=\color{numb},
-    morecomment=[l]{//},
-    commentstyle=\color{gray}\ttfamily,
-    literate=
-     *{0}{{{\color{numb}0}}}{1}
-      {1}{{{\color{numb}1}}}{1}
-      {2}{{{\color{numb}2}}}{1}
-      {3}{{{\color{numb}3}}}{1}
-      {4}{{{\color{numb}4}}}{1}
-      {5}{{{\color{numb}5}}}{1}
-      {6}{{{\color{numb}6}}}{1}
-      {7}{{{\color{numb}7}}}{1}
-      {8}{{{\color{numb}8}}}{1}
-      {9}{{{\color{numb}9}}}{1}
-      {:}{{{\color{punct}{:}}}}{1}
-      {,}{{{\color{punct}{,}}}}{1}
-      {\{}{{{\color{delim}{\{}}}}{1}
-      {\}}{{{\color{delim}{\}}}}}{1}
-      {[}{{{\color{delim}{[}}}}{1}
-      {]}{{{\color{delim}{]}}}}{1}
+string=[s]{"}{"},
+stringstyle=\color{numb},
+morecomment=[l]{//},
+commentstyle=\color{gray}\ttfamily,
+literate=
+*{0}{{{\color{numb}0}}}{1}
+{1}{{{\color{numb}1}}}{1}
+{2}{{{\color{numb}2}}}{1}
+{3}{{{\color{numb}3}}}{1}
+{4}{{{\color{numb}4}}}{1}
+{5}{{{\color{numb}5}}}{1}
+{6}{{{\color{numb}6}}}{1}
+{7}{{{\color{numb}7}}}{1}
+{8}{{{\color{numb}8}}}{1}
+{9}{{{\color{numb}9}}}{1}
+{:}{{{\color{punct}{:}}}}{1}
+{,}{{{\color{punct}{,}}}}{1}
+{\{}{{{\color{delim}{\{}}}}{1}
+{\}}{{{\color{delim}{\}}}}}{1}
+{[}{{{\color{delim}{[}}}}{1}
+{]}{{{\color{delim}{]}}}}{1}
 }
 
 \lstdefinelanguage{yaml}{
-  identifierstyle=\color{delim},
-  sensitive=false,
-  comment=[l]{\#},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{numb},
-  morestring=[b]',
-  morestring=[b]"
+    identifierstyle=\color{delim},
+    sensitive=false,
+    comment=[l]{\#},
+    commentstyle=\color{purple}\ttfamily,
+    stringstyle=\color{numb},
+    morestring=[b]',
+    morestring=[b]"
 }
 
 \lstdefinelanguage{firestoreRule}{
-  identifierstyle=\color{delim},
-  keywords={},
-  otherkeywords={% Operators
-    =, ==, /
-  },
-   % list of keywords
-   keywords= [2]{
-    service,
-    match,
-    allow,
-    for
-  },
-  keywordstyle=\color{purple},
-  keywordstyle=[2]\color{numb},
-  sensitive=false
+    identifierstyle=\color{delim},
+    keywords={},
+    otherkeywords={% Operators
+            =, ==, /
+        },
+    % list of keywords
+    keywords= [2]{
+            service,
+            match,
+            allow,
+            for
+        },
+    keywordstyle=\color{purple},
+    keywordstyle=[2]\color{numb},
+    sensitive=false
 }
+
+\lstdefinelanguage{ical}{
+    keywords={
+            VCALENDAR,
+            VTIMEZONE,
+            DAYLIGHT,
+            STANDARD,
+            VEVENT,
+            VERSION,
+            CALSCALE,
+            PRODID,
+            X-WR-CALNAME,
+            X-APPLE-CALENDAR-COLOR,
+            TZID,
+            TZOFFSETFROM,
+            TZOFFSETTO,
+            TZNAME,
+            DTSTART,
+            DTEND,
+            CATEGORIES,
+            ORGANIZER,
+            RRULE,
+            CREATED,
+            DTSTAMP,
+            LAST,
+            MODIFIED,
+            UID,
+            SUMMARY,
+            LOCATION,
+            DESCRIPTION,
+            CLASS,
+            STATUS
+        },
+    keywordstyle=\color{delim}\bfseries,
+    ndkeywords={BEGIN, END},
+    ndkeywordstyle=\color{magenta}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=true,
+}
+
 
 \lstloadlanguages{Python,Java,bash}
 
@@ -180,3 +220,37 @@
 %Eingabe und Ausgabe Texte
 \SetKwInOut{Input}{Eingabe}
 \SetKwInOut{Output}{Ausgabe}
+
+%Exkurs-Boxen
+\usepackage{awesomebox}
+\usepackage{mdframed}
+\usepackage{newfloat}
+\usepackage{caption}
+
+\DeclareFloatingEnvironment[placement=htbp]{exkurs}
+\captionsetup[exkurs]{labelformat=empty,textformat=empty,font=scriptsize,skip=0pt}
+\addto\extrasngerman{\def\exkursautorefname{Exkurs}}
+% newcounter{exkurs}
+\newenvironment{myExkurs}[3][htbp]{
+    \begin{exkurs}[#1]
+        \caption{#2}
+        \label{#3}
+        \begin{mdframed}[
+                backgroundcolor=ListingBackground,
+                topline=false,
+                rightline=false,
+                leftline=false,
+                bottomline=false
+            ]
+            \setlength{\aweboxvskip}{0mm}
+            \setlength{\aweboxleftmargin}{0.05\linewidth}
+            \setlength{\aweboxcontentwidth}{0.95\linewidth}
+
+            \begin{awesomeblock}[black]{2pt}{\faInfo}{black}
+                \textbf{Exkurs \theexkurs: }#2\newline
+                }
+                {
+            \end{awesomeblock}
+        \end{mdframed}
+    \end{exkurs}
+}

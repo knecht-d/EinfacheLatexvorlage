@@ -10,7 +10,7 @@
 	% headsep = 30pt,	% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
     % % footsepline,		% Linie vor Fusszeile.
     footheight=30pt,	% Höhe der Fusszeile
-    % % abstracton,		% Abstract Überschriften
+    abstracton,		    % Abstract Überschriften
     % % DIV=calc,		% Satzspiegel berechnen
     % % BCOR=8mm,		% Bindekorrektur links: 8mm
     % % headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
@@ -36,6 +36,7 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 \counterwithout{lstlisting}{chapter}
+\counterwithout{exkurs}{chapter}
 
 
 %\input{additionals/simpleTitle}
@@ -64,16 +65,18 @@
 
 % Inhaltsverzeichnis
 \begin{spacing}{1.1}
-    \begingroup
-        \pagestyle{empty}
-        %für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
-        \setcounter{tocdepth}{2}
-
-        \tableofcontents
-        \clearpage
-    \endgroup
+\begingroup
+%für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+\endgroup
 \end{spacing}
 \newpage
+
+
+\let\LaTeXStandardClearpage\clearpage
+\let\clearpage\relax  % Do nothing when a \clearpage command appears
 
 % Abkürzungsverzeichnis
 \newpage
@@ -90,6 +93,9 @@
 % Quellcodeverzeichnis
 \newpage
 \lstlistoflistings
+
+\let\clearpage\LaTeXStandardClearpage % Return to the old definition
+
 \clearpage
 
 \pagenumbering{arabic}

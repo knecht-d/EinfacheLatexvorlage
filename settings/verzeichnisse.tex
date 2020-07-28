@@ -1,5 +1,5 @@
 % Bibliography
-\usepackage[backend=biber, isbn=false, doi=false, style=ieee]{biblatex}
+\usepackage[backend=biber, doi=false, style=ieee, maxcitenames=1,  mincitenames=1]{biblatex}
 \addbibresource{bibliography.bib}
 \AtBeginBibliography{\raggedright}
 %\nocite{*}
@@ -10,3 +10,14 @@
 \usepackage[printonlyused]{acronym} % falls gewünscht kann die Option footnote eingefügt werden, dann wird die Erklärung nicht inline sondern in einer Fußnote dargestellt
 
 % \input{settings/acronyms}
+
+
+%  % Abstände in TOC ändern.
+
+% \BeforeTOCHead[toc]{%
+%     \KOMAoptions{parskip=false}% no parskip in ToC
+%     \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
+% }
+% \DeclareTOCStyleEntry[beforeskip=2pt]{chapter}{chapter}
+% \DeclareTOCStyleEntry[beforeskip=.5cm]{section}{section}
+% \DeclareTOCStyleEntry[beforeskip=.5cm]{default}{subsection}
