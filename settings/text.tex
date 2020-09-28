@@ -222,7 +222,6 @@ literate=
 \SetKwInOut{Output}{Ausgabe}
 
 %Exkurs-Boxen
-\usepackage{awesomebox}
 \usepackage{mdframed}
 \usepackage{newfloat}
 \usepackage{caption}
@@ -237,20 +236,14 @@ literate=
         \label{#3}
         \begin{mdframed}[
                 backgroundcolor=ListingBackground,
+                linewidth=4pt,
                 topline=false,
                 rightline=false,
-                leftline=false,
                 bottomline=false
             ]
-            \setlength{\aweboxvskip}{0mm}
-            \setlength{\aweboxleftmargin}{0.05\linewidth}
-            \setlength{\aweboxcontentwidth}{0.95\linewidth}
-
-            \begin{awesomeblock}[black]{2pt}{\faInfo}{black}
                 \textbf{Exkurs \theexkurs: }#2\newline
                 }
                 {
-            \end{awesomeblock}
         \end{mdframed}
     \end{exkurs}
 }
